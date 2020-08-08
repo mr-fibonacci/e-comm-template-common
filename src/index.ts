@@ -1,3 +1,9 @@
+// NEED TO IMPORT AUGMENTED TYPES
+import './augmented-types';
+
+// CUSTOM TYPES
+export * from './custom-types/custom-types';
+
 // ERRORS
 export * from './errors/bad-request-error';
 export * from './errors/custom-error';
