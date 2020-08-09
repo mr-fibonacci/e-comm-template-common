@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import { NotAuthorizedError } from '../errors/not-authorized-error';
-import { CurrentUser } from '../custom-types/custom-types';
+import { CurrentUser } from '../types/custom-types';
 
 export const requireAuth = (
   req: Request,
