@@ -13,7 +13,7 @@ export const handleErrors = (
     return res.status(err.statusCode).send(err.mapErrors());
   }
   console.error(err);
-  res.send({
+  res.status(500).send({
     errors: [{ message: 'server did an oopsie!' }],
   } as ErrorMessageObject);
 };

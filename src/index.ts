@@ -15,7 +15,11 @@ export * from './errors/resource-not-found-error';
 export * from './middlewares/handle-errors';
 export * from './middlewares/require-auth';
 export * from './middlewares/owns-resource';
+export * from './middlewares/url-not-found';
 export * from './middlewares/validate-request-body';
 
 // SCHEMAS & SCHEMA-RELATED INTERFACES
 export * from './schemas/product';
+
+// TESTING UTILS ETC
+export * from './test/test-utils';
