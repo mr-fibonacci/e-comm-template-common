@@ -20,6 +20,7 @@ export * from './middlewares/validate-request-body';
 
 // SCHEMAS & SCHEMA-RELATED INTERFACES
 export * from './schemas/product';
+export * from './schemas/order';
 
 // TESTING UTILS ETC
 export * from './test/test-utils';
