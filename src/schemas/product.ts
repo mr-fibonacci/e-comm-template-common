@@ -1,4 +1,5 @@
-import mongoose from 'mongoose';
+import { Document, Schema } from 'mongoose';
+import { OrderDoc } from './order';
 
 const ReadOnlyCategories = [
   'laptops',
@@ -16,7 +17,7 @@ export type ProductCategory = typeof ReadOnlyCategories[number];
 export interface ProductReqAttrs {
   name: string;
   category: ProductCategory;
-  quantity: number;
+  inStock: number;
   price: number;
 }
 
@@ -24,20 +25,22 @@ export interface ProductReqAttrs {
 export interface ProductAttrs {
   name: string;
   category: ProductCategory;
-  quantity: number;
+  inStock: number;
   price: number;
   userId: string;
 }
 
-export interface ProductDoc extends mongoose.Document {
+export interface ProductDoc extends Document {
   name: string;
   category: string;
-  quantity: number;
+  inStock: number;
   price: number;
   userId: string;
+  pendingUpdate: ProductReqAttrs;
+  activeOrders: OrderDoc[];
 }
 
-export const productSchema = new mongoose.Schema(
+export const productSchema = new Schema(
   {
     name: {
       type: String,
@@ -47,18 +50,27 @@ export const productSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    quantity: {
+    inStock: {
       type: Number,
       required: true,
+      min: 0,
     },
     price: {
       type: Number,
       required: true,
+      min: 0.01,
     },
     userId: {
       type: String,
       required: true,
     },
+    pendingUpdate: Object,
+    activeOrders: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Order',
+      },
+    ],
   },
   {
     timestamps: true,

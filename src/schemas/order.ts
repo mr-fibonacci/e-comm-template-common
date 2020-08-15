@@ -1,5 +1,5 @@
-import mongoose from 'mongoose';
-import { ProductAttrs } from './product';
+import { Document, Schema } from 'mongoose';
+import { ProductAttrs, ProductDoc } from './product';
 
 const OrderStatuses = [
   'created',
@@ -9,9 +9,18 @@ const OrderStatuses = [
 ] as const;
 
 type OrderStatus = typeof OrderStatuses[number];
-export interface OrderUpdateAttrs {
-  items: ProductAttrs[];
+
+// interface for an order item
+export interface ProductItem {
+  quantity: number;
+  id: string;
 }
+
+export interface OrderItems {
+  items: ProductItem[];
+  id: string;
+}
+
 export interface OrderAttrs {
   userId: string;
   status: OrderStatus;
@@ -19,14 +28,14 @@ export interface OrderAttrs {
   items: ProductAttrs[];
 }
 
-export interface OrderDoc extends mongoose.Document {
+export interface OrderDoc extends Document {
   userId: string;
   status: OrderStatus;
   expiresAt: Date;
-  items: ProductAttrs[];
+  items: ProductDoc[];
 }
 
-export const orderSchema = new mongoose.Schema(
+export const orderSchema = new Schema(
   {
     userId: {
       type: String,
@@ -40,10 +49,12 @@ export const orderSchema = new mongoose.Schema(
       type: Date,
       required: true,
     },
-    items: {
-      type: Array,
-      required: true,
-    },
+    items: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Product',
+      },
+    ],
   },
   {
     timestamps: true,
@@ -56,11 +67,3 @@ export const orderSchema = new mongoose.Schema(
     },
   }
 );
-
-// mongoose requires extra hack to allow type enforcing
-// orderSchema.statics.myUpdate = async function (
-//   id: string,
-//   attrs: OrderUpdateAttrs
-// ) {
-//   return await this.findByIdAndUpdate(id, attrs, { new: true });
-// };
