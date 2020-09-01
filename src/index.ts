@@ -18,6 +18,15 @@ export * from './middlewares/owns-resource';
 export * from './middlewares/url-not-found';
 export * from './middlewares/validate-request-body';
 
+// EVENTS & EVENT-RELATED INTERFACES
+export * from './events/base-event';
+export * from './events/base-listener';
+export * from './events/base-publisher';
+export * from './events/nats-client';
+export * from './events/product-created-event';
+export * from './events/services';
+export * from './events/subjects';
+
 // SCHEMAS & SCHEMA-RELATED INTERFACES
 export * from './schemas/product';
 export * from './schemas/order';

@@ -1,12 +1,7 @@
 import { Document, Schema } from 'mongoose';
-import { ProductAttrs, ProductDoc } from './product';
+import { ProductDoc } from './product';
 
-const OrderStatuses = [
-  'created',
-  'cancelled',
-  'awaiting:payment',
-  'complete',
-] as const;
+const OrderStatuses = ['pending', 'cancelled', 'finalized'] as const;
 
 type OrderStatus = typeof OrderStatuses[number];
 
@@ -14,18 +9,14 @@ type OrderStatus = typeof OrderStatuses[number];
 export interface ProductItem {
   quantity: number;
   id: string;
+  version: number;
 }
 
-export interface OrderItems {
-  items: ProductItem[];
-  id: string;
-}
+export type OrderItems = ProductItem[];
 
 export interface OrderAttrs {
   userId: string;
-  status: OrderStatus;
-  expiresAt: Date;
-  items: ProductAttrs[];
+  items: OrderItems;
 }
 
 export interface OrderDoc extends Document {
