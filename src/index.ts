@@ -27,9 +27,8 @@ export * from './events/product-created-event';
 export * from './events/services';
 export * from './events/subjects';
 
-// SCHEMAS & SCHEMA-RELATED INTERFACES
-export * from './schemas/product';
-export * from './schemas/order';
-
 // TESTING UTILS ETC
 export * from './test/test-utils';
+
+// GENERAL UTILS
+export * from './utils/utils';

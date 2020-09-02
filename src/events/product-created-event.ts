@@ -1,7 +1,16 @@
 import { Event } from './base-event';
-import { ProductDoc } from '../schemas/product';
+
+export interface ProductCreatedEventData {
+  id: string;
+  name: string;
+  category: string;
+  inStock: number;
+  price: number;
+  userId: string;
+  activeOrders: string[];
+}
 
 export interface ProductCreatedEvent extends Event {
   subject: 'product:created';
-  data: ProductDoc;
+  data: ProductCreatedEventData;
 }
