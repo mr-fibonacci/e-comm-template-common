@@ -29,11 +29,12 @@ export abstract class Listener<T extends Event> {
       this.subscriptionOptions()
     );
     subscription.on('message', (msg: Message) => {
-      console.log(
-        `${this.queueGroupName} service received message: ${this.subject}`
-      );
-
       const parsedData = this.parseMessage(msg);
+      console.log(
+        `${this.queueGroupName} service received message: ${
+          this.subject
+        } with data: ${JSON.stringify(parsedData)}`
+      );
       this.onMessage(parsedData, msg);
     });
   }
