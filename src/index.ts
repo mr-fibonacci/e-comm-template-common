@@ -23,7 +23,13 @@ export * from './events/base-event';
 export * from './events/base-listener';
 export * from './events/base-publisher';
 export * from './events/nats-client';
+export * from './events/order-created-event';
+export * from './events/order-updated-event';
+export * from './events/order-deleted-event';
 export * from './events/product-created-event';
+export * from './events/product-updated-event';
+export * from './events/product-reserved-event';
+export * from './events/items-reserved-event';
 export * from './events/services';
 export * from './events/subjects';
 
@@ -32,3 +38,6 @@ export * from './test/test-utils';
 
 // GENERAL UTILS
 export * from './utils/utils';
+
+// ORDER STATUS
+export * from './events/order-status';

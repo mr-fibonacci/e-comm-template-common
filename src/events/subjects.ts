@@ -6,6 +6,8 @@ const Subjects = [
   'product:created',
   'product:updated',
   'product:deleted',
+  'product:reserved',
+  'items:reserved',
 
   'order:created',
   'order:updated',

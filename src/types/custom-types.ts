@@ -16,3 +16,12 @@ const ReadOnlyCategories = [
 export const productCategories = ReadOnlyCategories.map((item) => item);
 
 export type ProductCategory = typeof ReadOnlyCategories[number];
+
+export interface OrderProductItem {
+  quantity: number;
+  id: string;
+  error?: string;
+  // version: number;
+}
+
+export type OrderItems = OrderProductItem[];
