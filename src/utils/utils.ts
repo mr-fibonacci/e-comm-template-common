@@ -19,7 +19,7 @@ interface OrderObject {
 
 const _itemsArrToObj = (itemsArr: OrderItems) => {
   return itemsArr.reduce((acc: OrderObject, cur: OrderProductItem) => {
-    acc[cur.id] = cur;
+    acc[cur.id] = { ...cur };
     return acc;
   }, {});
 };
@@ -29,23 +29,18 @@ export const calcOrderChanges = (
   current: OrderItems
 ): OrderItems => {
   const curObj = _itemsArrToObj(current);
-  previous = [...previous];
-  const obj = previous.reduce(
-    (acc: OrderObject, cur: OrderProductItem) => {
-      const { id, quantity } = cur;
-      if (acc[id]) {
-        const diff = acc[id].quantity - quantity;
-        !diff ? delete acc[id] : (acc[id].quantity = diff);
-      } else {
-        acc[id] = cur;
-        acc[id].quantity = -quantity;
-      }
-      return acc;
-    },
-    { ...curObj }
-  );
-  const answer = Object.values(obj);
-  return answer;
+  const obj = previous.reduce((acc: OrderObject, cur: OrderProductItem) => {
+    const { id, quantity } = cur;
+    const diff = acc[id]?.quantity - quantity;
+    if (acc[id]) {
+      if (!acc[id].quantity) acc[id].unset = true;
+      !diff ? delete acc[id] : (acc[id].quantity = diff);
+    } else {
+      acc[id] = { ...cur, quantity: -quantity, unset: true };
+    }
+    return acc;
+  }, curObj);
+  return Object.values(obj).filter((item) => item.quantity);
 };
 
 export const applyChangesToOrder = (
@@ -57,16 +52,12 @@ export const applyChangesToOrder = (
     (acc: OrderObject, cur: OrderProductItem) => {
       const { id, quantity } = cur;
       const diff = acc[id]?.quantity + quantity;
-      if (acc[id]) {
-        acc[id] = { ...cur };
-        acc[id].quantity = diff;
-        !diff ? delete acc[id] : (acc[id].quantity = diff);
-      } else {
-        acc[id] = { ...cur };
-      }
+      if (acc[id])
+        !diff ? delete acc[id] : (acc[id] = { ...cur, quantity: diff });
+      else acc[id] = cur;
       return acc;
     },
-    { ...orderObj }
+    orderObj
   );
   return Object.values(merged);
 };

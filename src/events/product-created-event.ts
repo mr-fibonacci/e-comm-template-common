@@ -7,7 +7,7 @@ export interface ProductCreatedEventData {
   inStock: number;
   price: number;
   userId: string;
-  activeOrders: string[];
+  activeOrders: Record<string, string>;
 }
 
 export interface ProductCreatedEvent extends Event {

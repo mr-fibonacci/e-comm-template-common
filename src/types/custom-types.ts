@@ -20,8 +20,9 @@ export type ProductCategory = typeof ReadOnlyCategories[number];
 export interface OrderProductItem {
   quantity: number;
   id: string;
-  error?: string;
   // version: number;
+  error?: string;
+  unset?: boolean;
 }
 
 export type OrderItems = OrderProductItem[];
