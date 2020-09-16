@@ -61,13 +61,13 @@ describe('calcOrderChanges...', () => {
       ]);
     });
 
-    it('items omitted in current order have -quantity and unset: true flag', () => {
+    it('items omitted in current order have -quantity and isReturned: true flag', () => {
       const delta = calcOrderChanges(
         [{ quantity: 3, id: '5f4fd90c29d82068b0932812' }],
         []
       );
       expect(delta).toEqual([
-        { quantity: -3, id: '5f4fd90c29d82068b0932812', unset: true },
+        { quantity: -3, id: '5f4fd90c29d82068b0932812', isReturned: true },
       ]);
     });
 
@@ -92,7 +92,7 @@ describe('calcOrderChanges...', () => {
       ]);
     });
 
-    it('an array and [] (delete action) results in -qty and unset:true', () => {
+    it('an array and [] (delete action) results in -qty and isReturned:true', () => {
       const delta = calcOrderChanges(
         [
           { quantity: 1, id: '5f4fd90c29d82068b0932810' },
@@ -102,9 +102,9 @@ describe('calcOrderChanges...', () => {
         []
       );
       expect(delta).toEqual([
-        { quantity: -1, id: '5f4fd90c29d82068b0932810', unset: true },
-        { quantity: -2, id: '5f4fd90c29d82068b0932811', unset: true },
-        { quantity: -3, id: '5f4fd90c29d82068b0932812', unset: true },
+        { quantity: -1, id: '5f4fd90c29d82068b0932810', isReturned: true },
+        { quantity: -2, id: '5f4fd90c29d82068b0932811', isReturned: true },
+        { quantity: -3, id: '5f4fd90c29d82068b0932812', isReturned: true },
       ]);
     });
 
@@ -121,7 +121,7 @@ describe('calcOrderChanges...', () => {
       );
       expect(delta).toEqual([
         { quantity: 1, id: '5f4fd90c29d82068b0932812' },
-        { quantity: -1, id: '5f4fd90c29d82068b0932811', unset: true },
+        { quantity: -1, id: '5f4fd90c29d82068b0932811', isReturned: true },
       ]);
     });
   });
@@ -158,9 +158,9 @@ describe('applyChangesToOrder...', () => {
       { quantity: 2, id: '5f4fd90c29d82068b0932812' },
       { quantity: 8, id: '5f4fd90c29d82068b0932814' },
       { quantity: 4, id: '5f4fd90c29d82068b0932816' },
-      { quantity: -2, id: '5f4fd90c29d82068b0932811', unset: true },
-      { quantity: -4, id: '5f4fd90c29d82068b0932813', unset: true },
-      { quantity: -6, id: '5f4fd90c29d82068b0932815', unset: true },
+      { quantity: -2, id: '5f4fd90c29d82068b0932811', isReturned: true },
+      { quantity: -4, id: '5f4fd90c29d82068b0932813', isReturned: true },
+      { quantity: -6, id: '5f4fd90c29d82068b0932815', isReturned: true },
     ]);
   });
 });

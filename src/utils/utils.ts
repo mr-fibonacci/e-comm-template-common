@@ -33,10 +33,10 @@ export const calcOrderChanges = (
     const { id, quantity } = cur;
     const diff = acc[id]?.quantity - quantity;
     if (acc[id]) {
-      if (!acc[id].quantity) acc[id].unset = true;
+      if (!acc[id].quantity) acc[id].isReturned = true;
       !diff ? delete acc[id] : (acc[id].quantity = diff);
     } else {
-      acc[id] = { ...cur, quantity: -quantity, unset: true };
+      acc[id] = { ...cur, quantity: -quantity, isReturned: true };
     }
     return acc;
   }, curObj);

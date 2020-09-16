@@ -17,12 +17,17 @@ export const productCategories = ReadOnlyCategories.map((item) => item);
 
 export type ProductCategory = typeof ReadOnlyCategories[number];
 
+export interface ActiveOrder {
+  isReturned: boolean;
+  orderVersion: number;
+}
+
 export interface OrderProductItem {
   quantity: number;
   id: string;
   // version: number;
   error?: string;
-  unset?: boolean;
+  isReturned?: boolean;
 }
 
 export type OrderItems = OrderProductItem[];

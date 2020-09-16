@@ -1,3 +1,4 @@
+import { ActiveOrder } from '../types/custom-types';
 import { Event } from './base-event';
 
 export interface ProductCreatedEventData {
@@ -7,7 +8,7 @@ export interface ProductCreatedEventData {
   inStock: number;
   price: number;
   userId: string;
-  activeOrders: Record<string, string>;
+  activeOrders: Record<string, ActiveOrder>;
 }
 
 export interface ProductCreatedEvent extends Event {
