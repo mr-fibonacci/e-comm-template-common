@@ -25,9 +25,10 @@ export interface ActiveOrder {
 export interface OrderProductItem {
   quantity: number;
   id: string;
-  // version: number;
+  version: number;
   error?: string;
   isReturned?: boolean;
+  isCancelled?: boolean;
 }
 
 export type OrderItems = OrderProductItem[];

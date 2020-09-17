@@ -3,6 +3,7 @@ import { OrderItems } from '../types/custom-types';
 
 interface OrderUpdatedEventData {
   id: string;
+  version: number;
   items: OrderItems;
 }
 

@@ -4,6 +4,7 @@ import { OrderItems } from '../../../common/src/index';
 
 export interface OrderCreatedEventData {
   id: string;
+  version: number;
   userId: string;
   status: OrderStatus;
   expiresAt: Date;

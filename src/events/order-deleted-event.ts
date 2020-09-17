@@ -3,6 +3,7 @@ import { OrderItems } from '../types/custom-types';
 
 interface OrderDeletedEventData {
   id: string;
+  version: number;
   items: OrderItems;
 }
 
