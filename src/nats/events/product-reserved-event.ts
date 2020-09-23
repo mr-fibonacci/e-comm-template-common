@@ -1,4 +1,4 @@
-import { Event } from './base-event';
+import { Event } from '../base-classes/base-event';
 
 export interface ProductReservedEventData {
   id: string;

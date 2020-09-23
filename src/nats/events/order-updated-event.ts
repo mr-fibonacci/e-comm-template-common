@@ -1,5 +1,5 @@
-import { Event } from './base-event';
-import { OrderItems } from '../types/custom-types';
+import { Event } from '../base-classes/base-event';
+import { OrderItems } from '../../types/custom-types';
 
 interface OrderUpdatedEventData {
   id: string;

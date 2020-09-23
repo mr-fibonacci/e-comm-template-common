@@ -1,4 +1,4 @@
-import { Event } from './base-event';
+import { Event } from '../base-classes/base-event';
 
 export interface ProductUpdatedEventData {
   id: string;
@@ -6,9 +6,7 @@ export interface ProductUpdatedEventData {
   category: string;
   inStock: number;
   price: number;
-  userId: string;
   version: number;
-  // activeOrders: string[];
 }
 
 export interface ProductUpdatedEvent extends Event {

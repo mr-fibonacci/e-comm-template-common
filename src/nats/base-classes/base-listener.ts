@@ -1,6 +1,6 @@
 import { Stan, Message, SubscriptionOptions } from 'node-nats-streaming';
 import { Event } from './base-event';
-import { Service } from './services';
+import { Service } from '../services';
 
 export abstract class Listener<T extends Event> {
   abstract subject: T['subject'];

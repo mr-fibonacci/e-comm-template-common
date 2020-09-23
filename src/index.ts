@@ -19,19 +19,20 @@ export * from './middlewares/url-not-found';
 export * from './middlewares/validate-request-body';
 
 // EVENTS & EVENT-RELATED INTERFACES
-export * from './events/base-event';
-export * from './events/base-listener';
-export * from './events/base-publisher';
-export * from './events/nats-client';
-export * from './events/order-created-event';
-export * from './events/order-updated-event';
-export * from './events/order-deleted-event';
-export * from './events/product-created-event';
-export * from './events/product-updated-event';
-export * from './events/product-reserved-event';
-export * from './events/items-reserved-event';
-export * from './events/services';
-export * from './events/subjects';
+export * from './nats/nats-client';
+export * from './nats/services';
+export * from './nats/subjects';
+export * from './nats/base-classes/base-event';
+export * from './nats/base-classes/base-listener';
+export * from './nats/base-classes/base-publisher';
+export * from './nats/events/order-created-event';
+export * from './nats/events/order-updated-event';
+export * from './nats/events/order-deleted-event';
+export * from './nats/events/product-created-event';
+export * from './nats/events/product-updated-event';
+export * from './nats/events/product-deleted-event';
+export * from './nats/events/product-reserved-event';
+export * from './nats/events/items-reserved-event';
 
 // TESTING UTILS ETC
 export * from './test/test-utils';
@@ -40,4 +41,4 @@ export * from './test/test-utils';
 export * from './utils/utils';
 
 // ORDER STATUS
-export * from './events/order-status';
+export * from './nats/order-status';

@@ -1,6 +1,6 @@
-import { Event } from './base-event';
-import { OrderStatus } from './order-status';
-import { OrderItems } from '../../../common/src/index';
+import { Event } from '../base-classes/base-event';
+import { OrderStatus } from '../order-status';
+import { OrderItems } from '../../index';
 
 export interface OrderCreatedEventData {
   id: string;
