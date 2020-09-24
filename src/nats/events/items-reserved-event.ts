@@ -3,6 +3,7 @@ import { Event } from '../base-classes/base-event';
 
 interface ItemsReservedEventData {
   id: string;
+  version: number;
   items: OrderItems;
 }
 

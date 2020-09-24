@@ -1,6 +1,6 @@
 import { Event } from '../base-classes/base-event';
 
-export interface ProductUpdatedEventData {
+interface ProductUpdatedEventData {
   id: string;
   name: string;
   category: string;

@@ -37,8 +37,5 @@ export * from './nats/events/items-reserved-event';
 // TESTING UTILS ETC
 export * from './test/test-utils';
 
-// GENERAL UTILS
-export * from './utils/utils';
-
 // ORDER STATUS
 export * from './nats/order-status';

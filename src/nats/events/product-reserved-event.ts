@@ -1,6 +1,6 @@
 import { Event } from '../base-classes/base-event';
 
-export interface ProductReservedEventData {
+interface ProductReservedEventData {
   id: string;
   quantity: number;
   isReturned?: boolean;

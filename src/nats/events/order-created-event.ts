@@ -2,7 +2,7 @@ import { Event } from '../base-classes/base-event';
 import { OrderStatus } from '../order-status';
 import { OrderItems } from '../../index';
 
-export interface OrderCreatedEventData {
+interface OrderCreatedEventData {
   id: string;
   version: number;
   userId: string;
