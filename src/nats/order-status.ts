@@ -2,6 +2,7 @@ const OrderStatuses = [
   'pending',
   'awaiting-action',
   'cancelled',
+  'expired',
   'finalized',
 ] as const;
 

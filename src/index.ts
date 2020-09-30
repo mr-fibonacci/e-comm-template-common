@@ -31,7 +31,6 @@ export * from './nats/events/order-deleted-event';
 export * from './nats/events/product-created-event';
 export * from './nats/events/product-updated-event';
 export * from './nats/events/product-deleted-event';
-export * from './nats/events/product-reserved-event';
 export * from './nats/events/items-reserved-event';
 
 // TESTING UTILS ETC
