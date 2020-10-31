@@ -1,9 +1,10 @@
+import { ProductCategory } from '../../types/custom-types';
 import { Event } from '../base-classes/base-event';
 
 interface ProductUpdatedEventData {
   id: string;
   name: string;
-  category: string;
+  category: ProductCategory;
   inStock: number;
   price: number;
   version: number;

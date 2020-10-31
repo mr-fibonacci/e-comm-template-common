@@ -8,7 +8,7 @@ const ReadOnlyCategories = [
   'electronics',
   'home & garden',
   'beauty',
-  'cloathing',
+  'clothing',
   'grocery',
 ] as const;
 
@@ -17,13 +17,20 @@ export const productCategories = ReadOnlyCategories.map((item) => item);
 
 export type ProductCategory = typeof ReadOnlyCategories[number];
 
+export interface ProductReqAttrs {
+  name: string;
+  category: ProductCategory;
+  inStock: number;
+  price: number;
+}
+
 export interface OrderProductItem {
   quantity: number;
   id: string;
   version: number;
   error?: string;
+  current?: ProductReqAttrs;
   isReturned?: boolean;
-  isCancelled?: boolean;
 }
 
 export type OrderItems = OrderProductItem[];

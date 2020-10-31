@@ -1,6 +1,6 @@
 const OrderStatuses = [
   'pending',
-  'awaiting-action',
+  'active',
   'cancelled',
   'expired',
   'finalized',
